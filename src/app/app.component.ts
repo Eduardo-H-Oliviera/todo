@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { Todo } from 'src/models/todo.model';
+import { Todo } from 'src/model/todo.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
-  selector: 'app-root', //<app-root>  
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 
 export class AppComponent {
-
-  public mode: string = 'list';
+  public mode = 'list';
   public todos: Todo[] = [];
-  public title: String = 'Tarefas Diarias';
+  public title = 'Minhas tarefas';
   public form: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -28,7 +28,7 @@ export class AppComponent {
   }
 
   add() {
-    const title = this.form.controls['title'].value;
+    const title = this.form.controls.title.value;
     const id = this.todos.length + 1;
     this.todos.push(new Todo(id, title, false));
     this.save();
@@ -43,8 +43,8 @@ export class AppComponent {
     const index = this.todos.indexOf(todo);
     if (index !== -1) {
       this.todos.splice(index, 1);
-      this.save();
     }
+    this.save();
   }
 
   markAsDone(todo: Todo) {
@@ -54,13 +54,13 @@ export class AppComponent {
 
   markAsUndone(todo: Todo) {
     todo.done = false;
-    this.save;
+    this.save();
   }
 
   save() {
     const data = JSON.stringify(this.todos);
     localStorage.setItem('todos', data);
-    this.mode = 'list;'
+    this.mode = 'list';
   }
 
   load() {
@@ -72,7 +72,7 @@ export class AppComponent {
     }
   }
 
-  changeMode(mode:string) {
+  changeMode(mode) {
     this.mode = mode;
   }
 }

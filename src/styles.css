@@ -3,11 +3,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Calistoga', cursive;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     text-align: center;
-    background-image: url("https://www.larutadelsorigens.cat/wallpic/full/78-789397_background-azul-claro-degrade-fundo-de-tela-degrade.jpg");
-
+    background: #3023ae;
+    background: -moz-linear-gradient(60deg, #3023ae 0%, #c86dd7 160%);
+    background: -webkit-linear-gradient(60eg, #3023ae 0%, #c86dd7 190%);
+    background: linear-gradient(60deg, #3023ae 0%, #c86dd7 100%);
 }
 
 button {
